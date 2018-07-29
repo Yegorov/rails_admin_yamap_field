@@ -1,0 +1,22 @@
+= render 'yamap_field', field: field
+
+:javascript
+  function errorMap(error) {
+    console.log("Error in loading Yandex map!");
+    console.log(error);
+  }
+
+  function initMap(ymaps){
+    var mapCenterLat = "#{field.center_lat}";
+    var mapCenterLong = "#{field.center_long}";
+    var zoomLavel = "#{field.zoom_level}";
+    var yaMap = new ymaps.Map("yamap_field", {
+        center: [mapCenterLat, mapCenterLong],
+        zoom: zoomLavel
+    });
+
+    var lat = "#{@object.send(field.latitude_field)}";
+    var long = "#{@object.send(field.longitude_field)}";
+    var myPlacemark = new ymaps.Placemark([lat, long]);
+    yaMap.geoObjects.add(myPlacemark);
+  }

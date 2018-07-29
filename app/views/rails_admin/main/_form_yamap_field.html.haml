@@ -1,2 +1,45 @@
-= form.send field.view_helper, field.method_name, field._html_attributes
-= field.default_zoom_level
+/= form.send field.view_helper, field.method_name, field._html_attributes
+= render 'yamap_field', field: field
+= form.send field.view_helper, field.method_name, field.html_attributes
+
+:javascript
+  function errorMap(error) {
+    console.log("Error in loading Yandex map!");
+    console.log(error);
+  }
+
+  function initMap(ymaps){
+    var mapCenterLat = "#{field.center_lat}";
+    var mapCenterLong = "#{field.center_long}";
+    var zoomLavel = "#{field.zoom_level}";
+    var yaMap = new ymaps.Map("yamap_field", {
+        center: [mapCenterLat, mapCenterLong],
+        zoom: zoomLavel
+    });
+
+    var lat = "#{@object.send(field.latitude_field)}";
+    var long = "#{@object.send(field.longitude_field)}";
+    var myPlacemark = new ymaps.Placemark([lat, long], {}, {
+      preset: 'islands#redDotIcon',
+      draggable: true
+    });
+    yaMap.geoObjects.add(myPlacemark);
+
+    function setCoordinates(position) {
+      console.log(position);
+      $("##{field.dom_name}").val(position.join(","));
+      $("##{field.latitude_dom_name}").val(position[0]);
+      $("##{field.longitude_dom_name}").val(position[1]);
+    }
+
+    yaMap.events.add('click', function(e) {
+      var position = e.get('coords');
+      myPlacemark.geometry.setCoordinates(position);
+      setCoordinates(position);
+    });
+
+    myPlacemark.events.add('dragend', function(e) {
+      var position = myPlacemark.geometry.getCoordinates();
+      setCoordinates(position);
+    });
+  }

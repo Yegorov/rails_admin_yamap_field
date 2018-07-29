@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = RailsAdminYamapField::VERSION
   s.authors     = ["Artem Yegorov"]
   s.email       = ["yegorov0725@yandex.ru"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of RailsAdminYamapField."
-  s.description = "TODO: Description of RailsAdminYamapField."
+  s.homepage    = "https://github.com/yegorov/rails_admin_yamap_field"
+  s.summary     = "Summary of RailsAdminYamapField."
+  s.description = "Description of RailsAdminYamapField."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
