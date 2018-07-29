@@ -10,11 +10,11 @@ Gem::Specification.new do |s|
   s.authors     = ["Artem Yegorov"]
   s.email       = ["yegorov0725@yandex.ru"]
   s.homepage    = "https://github.com/yegorov/rails_admin_yamap_field"
-  s.summary     = "Summary of RailsAdminYamapField."
-  s.description = "Description of RailsAdminYamapField."
+  s.summary     = "Simple implementation of Yandex maps in rails admin."
+  s.description = "Simple implementation of Yandex maps in rails admin."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
-  s.add_dependency "rails", "~> 5.2.0"
+  s.add_dependency "rails", ["> 4.2", "< 6"]
 end

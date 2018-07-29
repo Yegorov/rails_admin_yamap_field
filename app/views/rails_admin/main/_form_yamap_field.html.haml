@@ -1,4 +1,3 @@
-/= form.send field.view_helper, field.method_name, field._html_attributes
 = render 'yamap_field', field: field
 = form.send field.view_helper, field.method_name, field.html_attributes
 
@@ -11,10 +10,10 @@
   function initMap(ymaps){
     var mapCenterLat = "#{field.center_lat}";
     var mapCenterLong = "#{field.center_long}";
-    var zoomLavel = "#{field.zoom_level}";
+    var zoomLevel = "#{field.zoom_level}";
     var yaMap = new ymaps.Map("yamap_field", {
         center: [mapCenterLat, mapCenterLong],
-        zoom: zoomLavel
+        zoom: zoomLevel
     });
 
     var lat = "#{@object.send(field.latitude_field)}";

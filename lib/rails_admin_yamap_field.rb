@@ -26,11 +26,11 @@ module RailsAdmin
           end
 
           register_instance_option(:center_lat) do
-            55.767461
+            bindings[:object].send(self.latitude_field) || 55.767461
           end
 
           register_instance_option(:center_long) do
-            37.631422
+            bindings[:object].send(self.longitude_field) || 37.631422
           end
 
           register_instance_option(:zoom_level) do
