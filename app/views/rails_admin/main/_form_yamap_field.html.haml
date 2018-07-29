@@ -16,8 +16,8 @@
         zoom: zoomLevel
     });
 
-    var lat = "#{@object.send(field.latitude_field)}";
-    var long = "#{@object.send(field.longitude_field)}";
+    var lat = "#{field.bindings[:object].send(field.latitude_field)}";
+    var long = "#{field.bindings[:object].send(field.longitude_field)}";
     var myPlacemark = new ymaps.Placemark([lat, long], {}, {
       preset: 'islands#redDotIcon',
       draggable: true

@@ -25,6 +25,8 @@ module RailsAdmin
             end
           end
 
+          # If the point is presented, she is the center of the map
+          # else center of the map 0 km in Moscow
           register_instance_option(:center_lat) do
             bindings[:object].send(self.latitude_field) || 55.767461
           end
@@ -60,14 +62,17 @@ module RailsAdmin
 
           def dom_name
             @dom_name ||= "#{bindings[:form].try(:object_name)}_#{name}"
+                          .gsub /\[|\]\[|\]_|\]/, "_"
           end
 
           def latitude_dom_name
             @lat_dom_name ||= "#{bindings[:form].try(:object_name)}_#{latitude_field}"
+                              .gsub /\[|\]\[|\]_|\]/, "_"
           end
 
           def longitude_dom_name
             @lon_dom_name ||= "#{bindings[:form].try(:object_name)}_#{longitude_field}"
+                              .gsub /\[|\]\[|\]_|\]/, "_"
           end
 
         end
