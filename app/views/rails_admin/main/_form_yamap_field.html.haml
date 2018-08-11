@@ -26,6 +26,7 @@
 
     function setCoordinates(position) {
       console.log(position);
+      console.log($("##{field.latitude_dom_name}"));
       $("##{field.dom_name}").val(position.join(","));
       $("##{field.latitude_dom_name}").val(position[0]);
       $("##{field.longitude_dom_name}").val(position[1]);

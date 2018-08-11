@@ -1,5 +1,3 @@
-- api_key = field.api_key.present? ? "&apikey=#{field.api_key}" : ""
-- host = field.api_key.present? ? "enterprise.api-maps.yandex.ru" : "api-maps.yandex.ru"
-= javascript_include_tag "https://#{host}/2.1/?lang=#{field.map_lang}&onload=initMap&onerror=errorMap#{api_key}"
+= javascript_include_tag field.javascript_url
 
 %div{id: "yamap_field", style: "width: #{field.map_html_width}; height: #{field.map_html_height}"}

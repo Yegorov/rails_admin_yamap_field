@@ -61,18 +61,33 @@ module RailsAdmin
           end
 
           def dom_name
-            @dom_name ||= "#{bindings[:form].try(:object_name)}_#{name}"
-                          .gsub /\[|\]\[|\]_|\]/, "_"
+            # @dom_name ||= "#{bindings[:form].try(:object_name)}_#{name}"
+            #               .gsub /\[|\]\[|\]_|\]/, "_"
+            bindings[:form].instance_variable_get(:@dom_id)[:"#{name}"]
           end
 
           def latitude_dom_name
-            @lat_dom_name ||= "#{bindings[:form].try(:object_name)}_#{latitude_field}"
-                              .gsub /\[|\]\[|\]_|\]/, "_"
+            # @lat_dom_name ||= "#{bindings[:form].try(:object_name)}_#{latitude_field}"
+            #                   .gsub /\[|\]\[|\]_|\]/, "_"
+            bindings[:form].instance_variable_get(:@dom_id)[:"#{latitude_field}"]
           end
 
           def longitude_dom_name
-            @lon_dom_name ||= "#{bindings[:form].try(:object_name)}_#{longitude_field}"
-                              .gsub /\[|\]\[|\]_|\]/, "_"
+            # @lon_dom_name ||= "#{bindings[:form].try(:object_name)}_#{longitude_field}"
+            #                   .gsub /\[|\]\[|\]_|\]/, "_"
+            bindings[:form].instance_variable_get(:@dom_id)[:"#{longitude_field}"]
+          end
+
+          def javascript_url
+            return @javascript_url if @javascript_url.present?
+            api_key = api_key.present? ? "&apikey=#{field.api_key}" : ""
+            host = if api_key.present?
+              "enterprise.api-maps.yandex.ru"
+            else
+              "api-maps.yandex.ru"
+            end
+            @javascript_url = "https://#{host}/2.1/?lang=#{map_lang}" \
+                              "&onload=initMap&onerror=errorMap#{api_key}"
           end
 
         end
