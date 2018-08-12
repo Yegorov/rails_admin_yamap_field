@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/rails_admin_yamap_field.svg)](https://badge.fury.io/rb/rails_admin_yamap_field)
+
 # RailsAdminYamapField
 
 Simple implementation of Yandex maps in rails admin.
