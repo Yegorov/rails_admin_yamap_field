@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.description = "Simple implementation of Yandex maps in rails admin."
   s.license     = "MIT"
 
-  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
+  s.files = Dir["{app,config,db,lib,wiki}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
   s.add_dependency "rails", ["> 4.2", "< 6"]
 end
