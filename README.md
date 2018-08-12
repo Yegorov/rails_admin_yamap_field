@@ -70,7 +70,7 @@ end
 
 ### Screenshot
 
-![Sample screenshot](/wiki/screenshot.png)
+![Sample screenshot](/wiki/screenshot_1.png)
 
 ## References
 
